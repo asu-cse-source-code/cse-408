@@ -1,2 +1,3 @@
-# cse-466
-All projects and files from CSE 466 Computer Systems Security at ASU Fall 2021
+# CSE 408
+
+All projects and files from CSE 408 Multimedia Information Systems at ASU Fall 2021
