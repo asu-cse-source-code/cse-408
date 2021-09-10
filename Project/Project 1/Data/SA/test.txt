@@ -1,0 +1,14 @@
+epic	1
+good	1
+upright	1
+fortunate	0.958333333
+wonderfulness	0.875
+wonderful	0.875
+wide-eyed	0.875
+wholesomeness	0.875
+well-to-do	0.875
+well-situated	0.875
+well-heeled	0.875
+well-fixed	0.875
+vermifuge	0.875
+utter	0.875
