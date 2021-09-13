@@ -1,25 +1,20 @@
+from buildVoc import buildVoc
 import os
 import re
 
-def scan_folder(parent, text_data = ''):
-    # iterate over all the files in directory 'parent'
-    for file_name in os.listdir(parent):
-        if file_name.endswith(".txt"):
-            # if it's a txt file, print its name (or do whatever you want)
-            #print(file_name)
-            with open(f'{parent}/{file_name}') as data:
-                text_data += data.read()
-        else:
-            current_path = "".join((parent, "/", file_name))
-            if os.path.isdir(current_path) and current_path != 'Code':
-                # if we're checking a sub-directory, recursively call this method
-                text_data += scan_folder(current_path)
-    return text_data
-
 def cse408_bow(filepath, voc):
-    text_data = scan_folder(filepath)
-    text_data = re.sub(r'[^\w\s]', '', text_data).replace('\n', '')
-    print(text_data.split())
-    
+    # text_data = scan_folder(filepath)
+    feat_vec = []
+    text_data = ''
+    with open(filepath, 'r') as file:
+        text_data = file.read()
+        text_data = text_data.lower()
+        text_data = re.sub(r'[^\w\s]', '', text_data).replace('\n', '')
+        text_data += ' '
+    for word in voc:
+        feat_vec.append(text_data.count(word + " "))
+    #print(text_data.split())
+    return feat_vec
 
-cse408_bow('../Data/kNN/', [])
+if __name__ == "__main__":
+    print(cse408_bow('../Data/kNN/testing/neg/cv002_17424.txt', buildVoc('../Data/kNN/training/pos', [], 1)))

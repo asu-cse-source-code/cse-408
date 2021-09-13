@@ -41,13 +41,15 @@ def buildVoc(folder, voc, finvoc):
         prune_val = 50
         pruned = {word:count for word, count in counts.items() if count > prune_val}
         for item, val in pruned.items():
-            print(f'{item}:{val}')
+            #print(f'{item}:{val}')
             pass
         return list(pruned)
     else:
         pass
         return list(counts.keys())
 
-voc = []
-voc = buildVoc('../Data/kNN/training/neg', voc, 0)
-voc = buildVoc('../Data/kNN/training/pos', voc, 1)
+if __name__ == "__main__":
+    voc = []
+    voc = buildVoc('../Data/kNN/training/neg', voc, 0)
+    voc = buildVoc('../Data/kNN/training/pos', voc, 1)
+    print(voc)
