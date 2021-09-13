@@ -51,5 +51,5 @@ def buildVoc(folder, voc, finvoc):
 if __name__ == "__main__":
     voc = []
     voc = buildVoc('../Data/kNN/training/neg', voc, 0)
-    voc = buildVoc('../Data/kNN/training/pos', voc, 1)
+    # voc = buildVoc('../Data/kNN/training/pos', voc, 1)
     print(voc)
