@@ -38,6 +38,9 @@ m = sin(2*pi*f*t)+1.1; % constant 1.1 is added so all values are positive
 % what adjustment do you need to do to the signal so the dynamic range
 % remains as before?
 % insert your code here..
+% m = sin(1.25*pi*f*t)
+% m = m + max(m) + 0.1
+% m = ammod(m, 0.75, 1.25);
 
 
 % =================
@@ -92,7 +95,7 @@ dm = e/8; % decoded message signal
 
 % Now recover the original signal by interpolating e using
 % fs*upSamplingFactor samples
-upSamplingFactor = 2;
+upSamplingFactor = 13;
 
 rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
 % disp(size(m))
@@ -105,13 +108,29 @@ rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
 % rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
 % 
 % mseRes = immse(m, rm)
-% disp(mseRes)
+% disp(mseRes) % ---> 0.0014
 % 
 % psnrRes = 20 * log10(max(rm)/sqrt(mseRes))
-% disp(psnrRes)
+% disp(psnrRes) % ---> 35.1303
 
 % HW Part 1
 % =================
+
+% =================
+% HW Part 2
+upSamplingFactor = 1000;
+
+rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
+
+mseRes = immse(m, rm)
+disp(mseRes) % ---> 0.0014
+ 
+psnrRes = 20 * log10(max(m)/sqrt(mseRes))
+disp(psnrRes) % ---> 35.1303
+
+% HW Part 2
+% =================
+
 
 % define discrete time axis for recovered signal
 Tsr = 2*Ts/upSamplingFactor;
