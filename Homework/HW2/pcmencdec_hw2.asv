@@ -92,26 +92,17 @@ dm = e/8; % decoded message signal
 
 % Now recover the original signal by interpolating e using
 % fs*upSamplingFactor samples
-upSamplingFactor = 2;
+upSamplingFactor = 1000;
 
 rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
 % disp(size(m))
 % disp(size(rm))
 
-% =================
-% HW Part 1
-% upSamplingFactor = 1000;
-% 
-% rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
-% 
-% mseRes = immse(m, rm)
-% disp(mseRes)
-% 
-% psnrRes = 20 * log10(max(rm)/sqrt(mseRes))
-% disp(psnrRes)
+% Adding PSNR code
+mseRes = immse(m, rm)
+disp(mseRes)
 
-% HW Part 1
-% =================
+psnrRes = 20 * log10(max(rm)/sqrt(mseRes))
 
 % define discrete time axis for recovered signal
 Tsr = 2*Ts/upSamplingFactor;
