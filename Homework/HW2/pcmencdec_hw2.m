@@ -28,7 +28,7 @@ p = pulstran(t,d,'rectpuls',1/(fs*25));
 % =================
 % simple sinusoid at f (2fps) with a +shift of 1.1 to keep all values above
 % zero
-m = sin(2*pi*f*t)+1.1; % constant 1.1 is added so all values are positive
+% m = sin(2*pi*f*t)+1.1; % constant 1.1 is added so all values are positive
 % HW part 3
 % comment the line above (and assign a new value to it)
 % add 1Hz 25% amplitude modulation to the input m, i.e. positive
@@ -41,6 +41,12 @@ m = sin(2*pi*f*t)+1.1; % constant 1.1 is added so all values are positive
 % m = sin(1.25*pi*f*t)
 % m = m + max(m) + 0.1
 % m = ammod(m, 0.75, 1.25);
+A = 1.25
+m = [1+A*sin(2*pi*t]*sin(2*pi*f*t)
+
+new_bias = max(m) + 0.1
+
+m = m + new_bias
 
 
 % =================
