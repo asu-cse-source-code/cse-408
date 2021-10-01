@@ -41,12 +41,15 @@ p = pulstran(t,d,'rectpuls',1/(fs*25));
 % m = sin(1.25*pi*f*t)
 % m = m + max(m) + 0.1
 % m = ammod(m, 0.75, 1.25);
-A = 1.25
-m = [1+A*sin(2*pi*t]*sin(2*pi*f*t)
+A = .5;
+m = [1+A*sin(2*pi*t)].*sin(2*pi*f*t);
 
-new_bias = max(m) + 0.1
+new_bias = max(m) + 0.1;
 
-m = m + new_bias
+disp('new bias: ');
+disp(new_bias);
+
+m = m + new_bias;
 
 
 % =================
@@ -113,11 +116,11 @@ rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
 % 
 % rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
 % 
-% mseRes = immse(m, rm)
-% disp(mseRes) % ---> 0.0014
+% mseRes = immse(m, rm);
+% disp(mseRes); % ---> 0.0014
 % 
-% psnrRes = 20 * log10(max(rm)/sqrt(mseRes))
-% disp(psnrRes) % ---> 35.1303
+% psnrRes = 20; * log10(max(rm)/sqrt(mseRes))
+% disp(psnrRes); % ---> 35.1303
 
 % HW Part 1
 % =================
@@ -128,11 +131,11 @@ upSamplingFactor = 1000;
 
 rm = interpft(dm,fs*upSamplingFactor); % This is the received signal
 
-mseRes = immse(m, rm)
-disp(mseRes) % ---> 0.0014
+mseRes = immse(m, rm);
+disp(mseRes); % ---> 0.0014
  
-psnrRes = 20 * log10(max(m)/sqrt(mseRes))
-disp(psnrRes) % ---> 35.1303
+psnrRes = 20 * log10(max(m)/sqrt(mseRes));
+disp(psnrRes); % ---> 35.1303
 
 % HW Part 2
 % =================
